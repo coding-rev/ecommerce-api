@@ -1,15 +1,17 @@
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
-mongoose.connect(
-    "mongodb://localhost:27017/ecommerApiDB"
-)
-.then(()=>console.log("DBConnection is successfull!"))
+dotenv.config()
+
+mongoose
+.connect(process.env.MONGO_URL)
+.then(()=>console.log("DB Connection is successfull!"))
 .catch((err)=>{
     console.log(err);
 });
-
-app.listen(5000, ()=>{
+ 
+app.listen(process.env.PORT || 5000, ()=>{
     console.log("Backend server is running...")
 })
