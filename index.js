@@ -1,13 +1,14 @@
 /*
 Models Done
-TODO: Study deeper about modelling in mongoDB and NodeJS
-Video: @30:46
+TODO: null
+Video: @48:14
 */
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const userRoute = require('./routes/user');
+const authRoute = require('./routes/auth');
 
 dotenv.config()
 
@@ -22,6 +23,7 @@ mongoose
 // Main Routes 
 app.use(express.json());
 app.use("/api/user", userRoute);
+app.use("/api/auth", authRoute);
 
 // Server
 app.listen(process.env.PORT || 5000, ()=>{
